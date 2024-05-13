@@ -1,3 +1,4 @@
+# Version: Alpha 0.0.6
 import asyncio
 import logging
 
@@ -10,12 +11,11 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=config.bot_token.get_secret_value())
 dp = Dispatcher()
 
-@dp.message(Command('start'))
+@dp.message(Command('start')) 
 async def cmd_start(message: types.Message):
     kb = [
         
         [types.KeyboardButton(text= 'Запись на сеанс')],
-        [types.KeyboardButton(text= 'Выбор (салона, офиса, и т.д.)')],
         [types.KeyboardButton(text= 'Выбор исполнителя')],
         [types.KeyboardButton(text= 'Просмотр текущих записей')]
         
@@ -26,12 +26,12 @@ async def cmd_start(message: types.Message):
         input_field_placeholder='выберите нужную вам функцию'
     )
     
-    await message.answer('Привет я личный секретарь (Имя владельца), я помогу вам с записью на нужные вам сеанссы', reply_markup=keyboard)
+    await message.answer('Привет я личный секретарь (Имя владельца), я помогу вам с записью на нужные вам сеанссы', reply_markup=keyboard) # Приветсвеное сообщение при запуске бота
 
 @dp.message(F.text.lower() == 'запись на сеанс')
 async def with_puree(message: types.Message):
     bilder = InlineKeyboardBuilder()
-    bilder.add(types.InlineKeyboardButton(
+    bilder.add(types.InlineKeyboardButton( # Таких кнопок должно быть 15 
         text='14.04',
         callback_data='session_date')
     )
@@ -49,4 +49,3 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
-# Fuck
