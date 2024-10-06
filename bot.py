@@ -2,13 +2,12 @@
 import asyncio
 import logging
 
-from aiogram import F, Bot, Dispatcher, types, executor
+from aiogram import F, Bot, Dispatcher, types
 from aiogram.filters.command import Command
 from config_reader import config
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from contextlib import suppress
 from aiogram.exceptions import TelegramBadRequest
-from aiogram.contrib.fsm_storage.memory import MemoryStorage 
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=config.bot_token.get_secret_value())
@@ -19,7 +18,7 @@ user_data_time = {}
 user_data_performer = {}
 user_data_entry = {}
 
-@dp.message(Command('start')) 
+@dp.message(Command('start'))
 async def cmd_start(message: types.Message):
     kb = [
         
