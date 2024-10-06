@@ -1,4 +1,4 @@
-# Version: Alpha 0.1.0
+# Version: Beta 0.1.0
 import asyncio
 import logging
 
